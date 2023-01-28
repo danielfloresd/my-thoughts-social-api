@@ -1,6 +1,6 @@
 const connection = require("../config/connection");
-const {User, UserSchema} = require("../models/User");
-const {Thought, ThoughtSchema} = require("../models/Thought");
+const { User, UserSchema } = require("../models/User");
+const { Thought, ThoughtSchema } = require("../models/Thought");
 const {
   getRandomName,
   getRandomThought,
@@ -73,7 +73,7 @@ connection.once("open", async () => {
       }
     }
 
-    await User.updateOne({_id : user._id}, {$set : {friends}});
+    await User.updateOne({ _id: user._id }, { $set: { friends } });
   }
   // Log out the seed data to indicate what should appear in the database
   console.table(users);
