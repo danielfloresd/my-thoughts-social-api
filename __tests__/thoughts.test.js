@@ -6,7 +6,8 @@ describe("/api/thoughts", () => {
   let userId;
   let username;
 
-  beforeAll(() => { // wait for 5 seconds
+  beforeAll(() => {
+    // wait for 5 seconds
     // code to run before all tests in this suite
     request.get(`${URL}/api/users`, (error, response, body) => {
       const users = JSON.parse(body);
@@ -39,78 +40,89 @@ describe("/api/thoughts", () => {
   // Create a new Thought
   test("POST create a thought", (done) => {
     let newThought = {
-      thoughtText : "This is a new thought",
-      userId : userId,
-      username : username,
+      thoughtText: "This is a new thought",
+      userId: userId,
+      username: username,
     };
-    request.post({
-      url : `${URL}/api/thoughts`,
-      json : newThought,
-    },
-                 (error, response, body) => {
-                   expect(response.statusCode).toBe(200);
-                   const thought = body;
-                   thoughtId = thought._id;
-                   expect(thought.thoughtText).toBe(newThought.thoughtText);
-                   done();
-                 });
+    request.post(
+      {
+        url: `${URL}/api/thoughts`,
+        json: newThought,
+      },
+      (error, response, body) => {
+        expect(response.statusCode).toBe(200);
+        const thought = body;
+        thoughtId = thought._id;
+        expect(thought.thoughtText).toBe(newThought.thoughtText);
+        done();
+      }
+    );
   });
 
   // Test PUT update a thought
   test("PUT update a thought", (done) => {
-    const update = {thoughtText : "updated thought"};
-    request.put({
-      url : `${URL}/api/thoughts/${thoughtId}`,
-      json : update,
-    },
-                (error, response, body) => {
-                  expect(response.statusCode).toBe(200);
-                  const thought = body;
-                  expect(thought.thoughtText).toBe(update.thoughtText);
-                  done();
-                });
+    const update = { thoughtText: "updated thought" };
+    request.put(
+      {
+        url: `${URL}/api/thoughts/${thoughtId}`,
+        json: update,
+      },
+      (error, response, body) => {
+        expect(response.statusCode).toBe(200);
+        const thought = body;
+        expect(thought.thoughtText).toBe(update.thoughtText);
+        done();
+      }
+    );
   });
 
   // Test reactions POST /api/thoughts/:thoughtId/reactions
   let reactionId;
   test("POST create a reaction", (done) => {
     let newReaction = {
-      reactionBody : "This is a new reaction",
-      username : username,
+      reactionBody: "This is a new reaction",
+      username: username,
     };
-    request.post({
-      url : `${URL}/api/thoughts/${thoughtId}/reactions`,
-      json : newReaction,
-    },
-                 (error, response, body) => {
-                   expect(response.statusCode).toBe(200);
-                   const thought = body;
-                   expect(thought.reactions[0].reactionBody)
-                       .toBe(newReaction.reactionBody);
-                   reactionId = thought.reactions[0].reactionId;
-                   done();
-                 });
+    request.post(
+      {
+        url: `${URL}/api/thoughts/${thoughtId}/reactions`,
+        json: newReaction,
+      },
+      (error, response, body) => {
+        expect(response.statusCode).toBe(200);
+        const thought = body;
+        expect(thought.reactions[0].reactionBody).toBe(
+          newReaction.reactionBody
+        );
+        reactionId = thought.reactions[0].reactionId;
+        done();
+      }
+    );
   });
 
   // Test reactions DELETE /api/thoughts/:thoughtId/reactions/:reactionId
   test("DELETE a reaction", (done) => {
-    request.delete(`${URL}/api/thoughts/${thoughtId}/reactions/${reactionId}`,
-                   (error, response, body) => {
-                     const thought = JSON.parse(body);
-                     expect(response.statusCode).toBe(200);
-                     expect(thought.reactions.length).toBe(0);
-                     done();
-                   });
+    request.delete(
+      `${URL}/api/thoughts/${thoughtId}/reactions/${reactionId}`,
+      (error, response, body) => {
+        const thought = JSON.parse(body);
+        expect(response.statusCode).toBe(200);
+        expect(thought.reactions.length).toBe(0);
+        done();
+      }
+    );
   });
 
   // Test DELETE a thought
   test("DELETE a thought", (done) => {
-    request.delete(`${URL}/api/thoughts/${thoughtId}`,
-                   (error, response, body) => {
-                     expect(response.statusCode).toBe(200);
-                     const thought = JSON.parse(body);
-                     expect(thought._id).toBe(thoughtId);
-                     done();
-                   });
+    request.delete(
+      `${URL}/api/thoughts/${thoughtId}`,
+      (error, response, body) => {
+        expect(response.statusCode).toBe(200);
+        const thought = JSON.parse(body);
+        expect(thought._id).toBe(thoughtId);
+        done();
+      }
+    );
   });
 });
