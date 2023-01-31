@@ -4,11 +4,11 @@ const { User } = require("../models/User");
 const userController = {
   getAllUser(req, res) {
     User.find({})
-      .populate({
-        path: "thoughts", // User also populates Thoughts
-        select: "-__v", // The minus sign - in front of the field indicates
-        // that we don't want it to be returned.
-      })
+      // .populate({
+      //   path: "thoughts", // User also populates Thoughts
+      //   select: "-__v", // The minus sign - in front of the field indicates
+      //   // that we don't want it to be returned.
+      // })
       .select("-__v") // this put the sort in DESC order by the _id value
       .sort({ _id: -1 })
       .then((dbUserData) => {
