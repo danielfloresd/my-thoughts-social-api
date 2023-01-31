@@ -1,10 +1,10 @@
 [![DeepScan grade](https://deepscan.io/api/teams/19657/projects/23124/branches/691436/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=19657&pid=23124&bid=691436)[![CodeFactor](https://www.codefactor.io/repository/github/danielfloresd/employee-track-cms/badge)](https://www.codefactor.io/repository/github/danielflores/demployee-track-cms)
 
-# My-E-Superstore
+# My Thoughts Social API
 
 ## Description
 
-<p>My-E-Superstore is an easy-to-use e-commerce back-end solution. An e-commerce website can be easily managed with the solution's intuitive product and category management. The solution includes the category, product, and product tag management that helps you categorize your product selection for easy access, so customers can find exactly what they're looking for.</p>
+<p>A RESTful API for managing user profiles and thoughts with friend and reaction functionality.</p>
 
 <p><strong>🎥Click on video to view🎥</strong></p>
 
@@ -19,6 +19,7 @@ Download Video in <a href="./public/images/video.webm">webm</a>
 - [Description](#description)
 - [Installation](#🛠️installation)
 - [Usage](#💻usage)
+- [API Routes](#🛣️api-routes)
 - [Dependencies](#🧩dependencies)
 - [License](#📛license)
 - [Contributing](#🤝contributing)
@@ -30,24 +31,82 @@ Download Video in <a href="./public/images/video.webm">webm</a>
 
 ## 🛠️Installation
 
-<p>To install the application clone the repository https://github.com/danielfloresd/my-e-superstore and run node package manager with the following command: <strong>npm i</strong>.
-After all dependencies are installed, mysql needs to be installed. The schema can be created using
-
-mysql> source db/schema
-
-</p>
-
+To install the application clone the repository https://github.com/danielfloresd/my-thoughts-social-api and run node package manager with the following command: ```npm i```.
+After all dependencies are installed, mongodb needs to be installed. You can seed the mongodb using seed data by runing ```npm run seed```
 ## 💻Usage
 
-<p>
-After installing all dependencies run <strong>npm start</strong> to launch a webserver.
-</p>
+After installing all dependencies run ```npm start``` to launch a webserver.
+
+### 🛣️API-Routes
+
+**`/api/users`**
+
+- `GET` all users
+
+- `GET` a single user by its `_id` and populated thought and friend data
+
+- `POST` a new user:
+
+```json
+// example data
+{
+  "username": "lernantino",
+  "email": "lernantino@gmail.com"
+}
+```
+
+- `PUT` to update a user by its `_id`
+
+- `DELETE` to remove user by its `_id`
+
+**BONUS**: Remove a user's associated thoughts when deleted.
+
+---
+
+**`/api/users/:userId/friends/:friendId`**
+
+- `POST` to add a new friend to a user's friend list
+
+- `DELETE` to remove a friend from a user's friend list
+
+---
+
+**`/api/thoughts`**
+
+- `GET` to get all thoughts
+
+- `GET` to get a single thought by its `_id`
+
+- `POST` to create a new thought (don't forget to push the created thought's `_id` to the associated user's `thoughts` array field)
+
+```json
+// example data
+{
+  "thoughtText": "Here's a cool thought...",
+  "username": "lernantino",
+  "userId": "5edff358a0fcb779aa7b118b"
+}
+```
+
+- `PUT` to update a thought by its `_id`
+
+- `DELETE` to remove a thought by its `_id`
+
+---
+
+**`/api/thoughts/:thoughtId/reactions`**
+
+- `POST` to create a reaction stored in a single thought's `reactions` array field
+
+- `DELETE` to pull and remove a reaction by the reaction's `reactionId` value
+
 
 ## 🧩Dependencies
-* dotenv: 8.2.0
-* express: 4.17.1
-* mysql2: 2.1.0
-* sequelize: 5.21.7
+*   "express": "^4.17.1"
+*   "jest": "^29.4.1"
+*   "moment": "^2.29.4"
+*   "mongoose": "^6.0.13"
+*   "request": "^2.88.2"
 
 ## 📛License
 
@@ -83,7 +142,7 @@ If you would like to contribute, please follow the [GitHub contribution guidelin
 
 ## 📃Tests
 
-Testing implemented using jest. To run unit testing <strong>npm test</strong>
+Testing implemented using jest. To run unit testing ```npm test```
 
 ## ❓Questions
 

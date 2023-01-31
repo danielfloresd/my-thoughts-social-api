@@ -18,7 +18,7 @@ connection.once("open", async () => {
 
   // Create empty array to hold the users
   const users = [];
-  const numUsers = 2;
+  const numUsers = 20;
   // Loop 20 times -- add users to the users array
   for (let i = 0; i < numUsers; i++) {
     const fullName = getRandomName();

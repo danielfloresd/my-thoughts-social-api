@@ -78,26 +78,10 @@ const userController = {
             res.status(404).json({ message: "No Thought found with this id!" });
             return;
           }
-          console.log("Deleting thought: ", dbThoughtData);
         }
       );
       res.json(dbUserData);
     });
-
-    //   dbUserData.thoughts.forEach((thought) => {
-    //     Thought.findOneAndDelete({ _id: thought }).then((dbThoughtData) => {
-    //       if (!dbThoughtData) {
-    //         res
-    //           .status(404)
-    //           .json({ message: "No Thought found with this id!" });
-    //         return;
-    //       }
-    //       console.log("Deleting thought: " + dbThoughtData.thoughtText);
-    //     });
-    //   });
-    //   res.status(204).json(dbUserData);
-    // })
-    // .catch((err) => console.error(err));
   },
 
   //***------ user/friends----------------------
