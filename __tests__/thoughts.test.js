@@ -6,7 +6,8 @@ describe("/api/thoughts", () => {
   let userId;
   let username;
 
-  beforeAll(() => { // wait for 5 seconds
+  beforeAll(() => {
+    // wait for 5 seconds
     // code to run before all tests in this suite
     request.get(`${URL}/api/users`, (error, response, body) => {
       const users = JSON.parse(body);

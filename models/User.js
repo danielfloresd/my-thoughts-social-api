@@ -36,22 +36,20 @@ const UserSchema = new Schema(
   }
 );
 
-
 UserSchema.virtual("friendCount").get(function () {
   return this.friends.length;
 });
 
-UserSchema.pre('remove', async function(next) {
+UserSchema.pre("remove", async function (next) {
   // Delete all thoughts associated with the user
-  console.log("this.thoughts", this.thoughts)
-  await Thought.deleteMany({
-    _id: {
-      $in: this.thoughts
-    }
-  });
+  console.log("this.thoughts", this.thoughts);
+  await Thought.deleteMany({ _id: { $in: this.thoughts } });
   next();
 });
 
 const User = model("User", UserSchema);
 
-module.exports = { User, UserSchema };
+module.exports = {
+  User,
+  UserSchema,
+};

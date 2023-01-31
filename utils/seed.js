@@ -28,15 +28,11 @@ connection.once("open", async () => {
     const username = `${first}.${last}`;
     const email = `${first}.${last}@email.com`;
 
-    users.push({
-      username,
-      email
-    });
+    users.push({ username, email });
   }
 
   // Add users to the collection and await the results
   await User.collection.insertMany(users);
-
 
   // Add 3 random friends to the each user
   for (let i = 0; i < users.length; i++) {
@@ -73,8 +69,7 @@ connection.once("open", async () => {
     for (let j = 0; j < 3; j++) {
       const randomUser = users[Math.floor(Math.random() * users.length)];
       if (randomUser.username !== user.username) {
-        if(!friends.includes(randomUser._id))
-          friends.push(randomUser._id);
+        if (!friends.includes(randomUser._id)) friends.push(randomUser._id);
       }
     }
 

@@ -4,7 +4,7 @@ const { User } = require("../models/User");
 const userController = {
   getAllUser(req, res) {
     User.find({})
-      .select("-__v") //this put the sort in DESC order by the _id value
+      .select("-__v") // this put the sort in DESC order by the _id value
       .sort({ _id: -1 })
       .then((dbUserData) => {
         res.json(dbUserData);
@@ -19,8 +19,9 @@ const userController = {
   getUserById({ params }, res) {
     User.findOne({ _id: params.id })
       .populate({
-        path: "thoughts", //User also populates Thoughts
-        select: "-__v", // The minus sign - in front of the field indicates that we don't want it to be returned.
+        path: "thoughts", // User also populates Thoughts
+        select: "-__v", // The minus sign - in front of the field indicates
+        // that we don't want it to be returned.
       })
       .select("-__v") //  //this put the sort in DESC order by the _id value
       .then((dbUserData) => {
