@@ -44,10 +44,11 @@ After installing all dependencies run <strong>npm start</strong> to launch a web
 </p>
 
 ## 🧩Dependencies
-* dotenv: 8.2.0
-* express: 4.17.1
-* mysql2: 2.1.0
-* sequelize: 5.21.7
+
+- dotenv: 8.2.0
+- express: 4.17.1
+- mysql2: 2.1.0
+- sequelize: 5.21.7
 
 ## 📛License
 
@@ -91,7 +92,6 @@ For questions, please contact:
 
 - [![GitHub github:](https://img.shields.io/badge/github:-danielfloresd-black.svg)](https://github.com/danielfloresd)
 - [![email](https://img.shields.io/badge/email:-daniel.flor3s.d@gmail.com-blue.svg)](mailto:daniel.flor3s.d@gmail.com)
-
 
 ## 🌐Website
 
