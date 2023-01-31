@@ -1,6 +1,6 @@
 const connection = require("../config/connection");
-const { User, UserSchema } = require("../models/User");
-const { Thought, ThoughtSchema } = require("../models/Thought");
+const {User, UserSchema} = require("../models/User");
+const {Thought, ThoughtSchema} = require("../models/Thought");
 const {
   getRandomName,
   getRandomThought,
@@ -28,7 +28,7 @@ connection.once("open", async () => {
     const username = `${first}.${last}`;
     const email = `${first}.${last}@email.com`;
 
-    users.push({ username, email });
+    users.push({username, email});
   }
 
   // Add users to the collection and await the results
@@ -63,17 +63,18 @@ connection.once("open", async () => {
     }
 
     await Thought.collection.insertMany(thoughts);
-    await User.updateOne({ _id: user._id }, { $set: { thoughts } });
+    await User.updateOne({_id : user._id}, {$set : {thoughts}});
 
     const friends = [];
     for (let j = 0; j < 3; j++) {
       const randomUser = users[Math.floor(Math.random() * users.length)];
       if (randomUser.username !== user.username) {
-        if (!friends.includes(randomUser._id)) friends.push(randomUser._id);
+        if (!friends.includes(randomUser._id))
+          friends.push(randomUser._id);
       }
     }
 
-    await User.updateOne({ _id: user._id }, { $set: { friends } });
+    await User.updateOne({_id : user._id}, {$set : {friends}});
   }
   // Log out the seed data to indicate what should appear in the database
   console.table(users);
