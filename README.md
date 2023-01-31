@@ -33,11 +33,23 @@ After installing all dependencies run ```npm start``` to launch a webserver.
 
 <p><strong>🎥Click on videos to view🎥</strong></p>
 
-* <a href="https://drive.google.com/file/d/1CAFjtD_AvmpYs39EHR_dsypRxIs6fSz0/view">Find All Users & Thoughts</a>
-* <a href="https://drive.google.com/file/d/1pA7amcCfpr7PExotyVhuyg007wb1iw5R/view">Find User & Thought by ID</a>
-* <a href="https://drive.google.com/file/d/1t6ZrJNFVjroctPhrHmHm1dJuDsvBIHKP/view">Create, Update & Delete Users</a>
-* <a href="https://drive.google.com/file/d/1HqZaY8Cx8R0e6rbmk-Hz4iY2wYwc9MNz/view">Create, Update & Delete Thought</a>
-* <a href="https://drive.google.com/file/d/1h-pUptC6qYG2Jj1aFVnKByFwWTGiczyg/view">Add & Remove Friends & Reactions</a>
+<ul>
+  <li>
+    <a href="https://drive.google.com/file/d/1CAFjtD_AvmpYs39EHR_dsypRxIs6fSz0/view">Find All Users & Thoughts</a>
+  </li>
+  <li>
+    <a href="https://drive.google.com/file/d/1pA7amcCfpr7PExotyVhuyg007wb1iw5R/view">Find User & Thought by ID</a>
+  </li>
+  <li>
+    <a href="https://drive.google.com/file/d/1t6ZrJNFVjroctPhrHmHm1dJuDsvBIHKP/view">Create, Update & Delete Users</a>
+  </li>
+  <li>
+    <a href="https://drive.google.com/file/d/1HqZaY8Cx8R0e6rbmk-Hz4iY2wYwc9MNz/view">Create, Update & Delete Thought</a>
+  </li>
+  <li>
+    <a href="https://drive.google.com/file/d/1h-pUptC6qYG2Jj1aFVnKByFwWTGiczyg/view">Add & Remove Friends & Reactions</a>
+  </li>
+</ul>
 
 
 **`/api/users`**
