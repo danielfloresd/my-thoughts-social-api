@@ -5,10 +5,11 @@ const thoughtController = {
   getAllThought(req, res) {
     Thought.find({})
       .populate({
-        path: "reactions", //Thought also populates Thoughts
-        select: "-__v", // The minus sign - in front of the field indicates that we don't want it to be returned.
+        path: "reactions", // Thought also populates Thoughts
+        select: "-__v", // The minus sign - in front of the field indicates
+        // that we don't want it to be returned.
       })
-      .select("-__v") //this put the sort in DESC order by the _id value
+      .select("-__v") // this put the sort in DESC order by the _id value
       .then((dbThoughtData) => res.json(dbThoughtData))
       .catch((err) => {
         console.log(err);
@@ -16,7 +17,8 @@ const thoughtController = {
       });
   },
 
-  // get one Thought by id  Get http://localhost:3001/api/Thoughts/<Thought-id-here>
+  // get one Thought by id  Get
+  // http://localhost:3001/api/Thoughts/<Thought-id-here>
   getThoughtById({ params }, res) {
     Thought.findOne({ _id: params.id })
       .then((dbThoughtData) => {
@@ -53,7 +55,8 @@ const thoughtController = {
       .catch((err) => res.json(err));
   },
 
-  // update Thought by id  Put http://localhost:3001/api/Thoughts/<Thought-id-here>
+  // update Thought by id  Put
+  // http://localhost:3001/api/Thoughts/<Thought-id-here>
   updateThought({ params, body }, res) {
     Thought.findOneAndUpdate({ _id: params.id }, body, {
       new: true,
